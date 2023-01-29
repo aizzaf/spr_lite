@@ -6,11 +6,11 @@ import tensorflow as tf
 start = time.time()
 
 image = cv2.imread('0rot-1trans250_250.jpg')
-height, width, channel = image.shape
-image_show = np.array(image, dtype='float32')
-image_input = cv2.resize(image_show, (256,256))
+height, width = image.shape[:2]
+image_input = cv2.resize(image, (256,256))
+image_input = np.array(image_input, dtype='float32')
 
-TF_LITE_MODEL_FILE_NAME = "tf_lite_012rsmol_quant_model.tflite"
+TF_LITE_MODEL_FILE_NAME = "tf_lite_012rsmol_uint8_quant_model.tflite"
 interpreter = tf.lite.Interpreter(model_path = TF_LITE_MODEL_FILE_NAME)
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
@@ -31,4 +31,5 @@ cv2.imshow('ta',image)
 end = time.time()
 
 print(str(end-start)+' seconds')
+
 cv2.waitKey(0)
