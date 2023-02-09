@@ -1,0 +1,1 @@
+This project goal is to implement branched artificial convolutional neural network model that can predict class of star image generated from SAO star catalogue. It also can predict the guide star and rolling angle under small condition.
